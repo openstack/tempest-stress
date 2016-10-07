@@ -5,4 +5,4 @@
 pbr>=1.6 # Apache-2.0
 Babel>=1.3
 oslo.log>=1.14.0 # Apache-2.0
-tempest>=1333.0.0
+tempest>=13.0.0
