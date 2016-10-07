@@ -14,7 +14,7 @@
 from tempest.common.utils import data_utils
 from tempest.common import waiters
 from tempest import config
-import tempest_stress.stress.stressaction as stressaction
+import tempest_stress.stressaction as stressaction
 
 CONF = config.CONF
 
