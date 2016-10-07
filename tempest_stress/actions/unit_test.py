@@ -14,7 +14,7 @@ from oslo_log import log as logging
 from oslo_utils import importutils
 
 from tempest import config
-import tempest.stress.stressaction as stressaction
+import tempest_stress.stress.stressaction as stressaction
 
 CONF = config.CONF
 

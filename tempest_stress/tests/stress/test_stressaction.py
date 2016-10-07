@@ -13,7 +13,7 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-import tempest.stress.stressaction as stressaction
+import tempest_stress.stress.stressaction as stressaction
 import tempest.test
 
 

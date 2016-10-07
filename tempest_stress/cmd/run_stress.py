@@ -27,7 +27,7 @@ except ImportError:
 from oslo_log import log as logging
 from testtools import testsuite
 
-from tempest.stress import driver
+from tempest_stress.stress import driver
 
 LOG = logging.getLogger(__name__)
 

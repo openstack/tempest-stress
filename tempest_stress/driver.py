@@ -28,7 +28,7 @@ from tempest.common.utils import data_utils
 from tempest import config
 from tempest import exceptions
 from tempest.lib.common import ssh
-from tempest.stress import cleanup
+from tempest_stress.stress import cleanup
 
 CONF = config.CONF
 
