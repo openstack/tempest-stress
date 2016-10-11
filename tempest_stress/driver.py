@@ -20,7 +20,6 @@ import time
 from oslo_log import log as logging
 from oslo_utils import importutils
 import six
-
 from tempest import clients
 from tempest.common import cred_client
 from tempest.common import credentials_factory as credentials
@@ -28,9 +27,12 @@ from tempest.common.utils import data_utils
 from tempest import config
 from tempest import exceptions
 from tempest.lib.common import ssh
+
 from tempest_stress import cleanup
+from tempest_stress import config as stress_cfg
 
 CONF = config.CONF
+STRESS_CONF = stress_cfg.CONF
 
 LOG = logging.getLogger(__name__)
 processes = []
@@ -115,13 +117,14 @@ def stress_openstack(tests, duration, max_runs=None, stop_on_error=False):
     """Workload driver. Executes an action function against a nova-cluster."""
     admin_manager = credentials.AdminManager()
 
-    ssh_user = CONF.stress.target_ssh_user
-    ssh_key = CONF.stress.target_private_key_path
-    logfiles = CONF.stress.target_logfiles
-    log_check_interval = int(CONF.stress.log_check_interval)
-    default_thread_num = int(CONF.stress.default_thread_number_per_action)
+    ssh_user = STRESS_CONF.stress.target_ssh_user
+    ssh_key = STRESS_CONF.stress.target_private_key_path
+    logfiles = STRESS_CONF.stress.target_logfiles
+    log_check_interval = int(STRESS_CONF.stress.log_check_interval)
+    default_thread_num = int(
+        STRESS_CONF.stress.default_thread_number_per_action)
     if logfiles:
-        controller = CONF.stress.target_controller
+        controller = STRESS_CONF.stress.target_controller
         computes = _get_compute_nodes(controller, ssh_user, ssh_key)
         for node in computes:
             do_ssh("rm -f %s" % logfiles, node, ssh_user, ssh_key)
@@ -255,7 +258,7 @@ def stress_openstack(tests, duration, max_runs=None, stop_on_error=False):
     print("Summary:")
     print("Run %d actions (%d failed)" % (sum_runs, sum_fails))
 
-    if not had_errors and CONF.stress.full_clean_stack:
+    if not had_errors and STRESS_CONF.stress.full_clean_stack:
         LOG.info("cleaning up")
         cleanup.cleanup()
     if had_errors:
