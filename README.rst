@@ -38,8 +38,10 @@ Running default stress test set
 Configuration
 *************
 To Run stress tests, two configuration files are needed:
-#. tempest.conf - As per Tempest configuration guidlines
-#. stress_tests.conf - same location as tempest.conf
+
+1. tempest.conf - As per Tempest configuration guidlines
+
+2. stress_tests.conf - same location as tempest.conf
 
 later one is being used to define all config options specific to stress tests.
 
