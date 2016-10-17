@@ -1,0 +1,12 @@
+CHANGES
+=======
+
+* Fix config.py
+* Update README.rst
+* Update README.rst
+* Fix config optins registration
+* Fix more import
+* Update requirements.txt
+* Fix import modules
+* Initial commit for stress framework from tempest
+* Initial commit

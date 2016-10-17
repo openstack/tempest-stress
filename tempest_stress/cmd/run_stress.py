@@ -28,6 +28,7 @@ from oslo_log import log as logging
 from testtools import testsuite
 from tempest import config
 
+from tempest_stress import config as stress_cfg
 from tempest_stress import driver
 
 LOG = logging.getLogger(__name__)
@@ -73,9 +74,9 @@ def discover_stress_tests(path="./", filter_attr=None, call_inherited=False):
 
 
 parser = argparse.ArgumentParser(description='Run stress tests')
-parser.add_argument('-c', '--config-file',
-                     metavar='/etc/tempest.conf',
-                     help='path to tempest config file')
+parser.add_argument('-c', '--config-file-path',
+                     metavar='/etc/',
+                     help='path to tempest and stress tests config files')
 parser.add_argument('-d', '--duration', default=300, type=int,
                     help="Duration of test in secs")
 parser.add_argument('-s', '--serial', action='store_true',
@@ -99,8 +100,10 @@ group.add_argument('-t', "--tests", nargs='?',
 def main():
     ns = parser.parse_args()
     result = 0
-    if ns.config_file:
-        config.CONF.set_config_path(ns.config_file)
+    if ns.config_file_path:
+        tempest_config = ns.config_file_path + "/tempest.conf"
+        config.CONF.set_config_path(tempest_config)
+        stress_cfg.CONF.set_config_path(ns.config_file_path)
     if not ns.all:
         tests = json.load(open(ns.tests, 'r'))
     else:
