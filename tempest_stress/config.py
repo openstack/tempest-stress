@@ -12,10 +12,13 @@
 #    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 #    License for the specific language governing permissions and limitations
 #    under the License.
+import logging as std_logging
+import os
 
 from oslo_config import cfg
+from oslo_log import log as logging
 
-from tempest import config  # noqa
+LOG = logging.getLogger('tempest_stress')
 
 stress_group = cfg.OptGroup(name='stress', title='Stress Test Options')
 
@@ -58,41 +61,46 @@ class StressConfigPrivate(object):
 
     DEFAULT_CONFIG_FILE = "stress_tests.conf"
 
-    def __init__(self):
+    def __init__(self, config_path=None):
         """Initialize a configuration from a conf directory and conf file."""
         super(StressConfigPrivate, self).__init__()
 
         # Environment variables override defaults.
         conf_file = os.environ.get('STRESS_TEST_CONFIG', self.DEFAULT_CONFIG_FILE)
-        conf_dirs = list()
-        conf_dir = os.path.dirname(os.path.dirname(__file__))
-        conf_path = os.path.join(conf_dir, conf_file)
+        conf_path = ''
+        if config_path:
+            config_path + '/' + self.DEFAULT_CONFIG_FILE
         if not os.path.isfile(conf_path):
             if os.environ.get('STRESS_TEST_CONFIG_DIR'):
                 conf_dir = os.environ.get('STRESS_TEST_CONFIG_DIR')
                 conf_path = os.path.join(conf_dir, conf_file)
             if not os.path.isfile(conf_path):
-                raise Exception('Config file: %s could not be found'
-                                % self.DEFAULT_CONFIG_FILE)
+                conf_path = "/etc/tempest/" + self.DEFAULT_CONFIG_FILE
         LOG.info("Using tempest_stress config file %s" % conf_path)
         conf = cfg.CONF
-        conf([], project='tempest_stress', default_config_files=[conf_path])
-        assert False, conf_path
+        if os.path.isfile(conf_path):
+            conf([], project='stress', default_config_files=[conf_path])
+        else:
+            conf([], project='stress')
         conf.register_group(stress_group)
         group_name = stress_group.name
         for opt in StressGroup:
             conf.register_opt(opt, group=group_name)
-        self.stress = cfg.CONF.stress
+        self.stress = conf.stress
         conf.log_opt_values(LOG, std_logging.DEBUG)
 
 
 class StressConfigProxy(object):
     _config = None
-
+    _path = None
     def __getattr__(self, attr):
         if not self._config:
-            self._config = StressConfigPrivate()
+            self._config = StressConfigPrivate(config_path=self._path)
 
         return getattr(self._config, attr)
+
+    def set_config_path(self, path):
+        self._path = path
+
 
 CONF = StressConfigProxy()
