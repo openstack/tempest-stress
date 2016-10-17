@@ -35,6 +35,16 @@ in tempest.conf or use the default `logging.conf.sample` file.
 Running default stress test set
 -------------------------------
 
+Configuration
+*************
+To Run stress tests, two configuration files are needed:
+#. tempest.conf - As per Tempest configuration guidlines
+#. stress_tests.conf - same location as tempest.conf
+
+later one is being used to define all config options specific to stress tests.
+
+Run:
+****
 The stress test framework can automatically discover test inside the tempest
 test suite. All test flag with the `@stresstest` decorator will be executed.
 In order to use this discovery you have to install tempest CLI, be in the
