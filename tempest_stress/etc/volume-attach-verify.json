@@ -1,4 +1,4 @@
-[{"action": "tempest.stress.actions.volume_attach_verify.VolumeVerifyStress",
+[{"action": "tempest_stress.actions.volume_attach_verify.VolumeVerifyStress",
   "threads": 1,
   "use_admin": true,
   "use_isolated_tenants": true,

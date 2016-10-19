@@ -1,4 +1,4 @@
-[{"action": "tempest.stress.actions.unit_test.UnitTest",
+[{"action": "tempest_stress.actions.unit_test.UnitTest",
   "threads": 8,
   "use_admin": true,
   "use_isolated_tenants": true,

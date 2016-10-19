@@ -35,7 +35,7 @@ LOG = logging.getLogger(__name__)
 
 
 def discover_stress_tests(path="./", filter_attr=None, call_inherited=False):
-    """Discovers all tempest tests and create action out of them
+    """Discovers all tests and create action out of them
     """
     LOG.info("Start test discovery")
     tests = []
@@ -59,7 +59,7 @@ def discover_stress_tests(path="./", filter_attr=None, call_inherited=False):
             class_setup_per = getattr(test_func, "st_class_setup_per")
 
             action = {'action':
-                      "tempest.stress.actions.unit_test.UnitTest",
+                      "tempest_stress.actions.unit_test.UnitTest",
                       'kwargs': {"test_method": full_name,
                                  "class_setup_per": class_setup_per
                                  }

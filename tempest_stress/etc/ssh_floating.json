@@ -1,4 +1,4 @@
-[{"action": "tempest.stress.actions.ssh_floating.FloatingStress",
+[{"action": "tempest_stress.actions.ssh_floating.FloatingStress",
   "threads": 8,
   "use_admin": true,
   "use_isolated_tenants": true,

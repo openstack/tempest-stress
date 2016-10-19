@@ -50,5 +50,5 @@ class StressFrameworkTest(base.TestCase):
         return proc.returncode
 
     def test_help_function(self):
-        result = self._cmd("python", "-m tempest.cmd.run_stress -h")
+        result = self._cmd("python", "-m tempest_stress.cmd.run_stress -h")
         self.assertEqual(0, result)
