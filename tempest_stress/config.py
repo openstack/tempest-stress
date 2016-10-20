@@ -18,7 +18,7 @@ import os
 from oslo_config import cfg
 from oslo_log import log as logging
 
-LOG = logging.getLogger('tempest_stress')
+LOG = logging.getLogger(__name__)
 
 stress_group = cfg.OptGroup(name='stress', title='Stress Test Options')
 
@@ -77,7 +77,7 @@ class StressConfigPrivate(object):
             if not os.path.isfile(conf_path):
                 conf_path = "/etc/tempest/" + self.DEFAULT_CONFIG_FILE
         LOG.info("Using tempest_stress config file %s" % conf_path)
-        conf = cfg.CONF
+        conf = cfg.ConfigOpts()
         if os.path.isfile(conf_path):
             conf([], project='stress', default_config_files=[conf_path])
         else:
