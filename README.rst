@@ -90,4 +90,4 @@ some scripts to do this in the ``tools`` subdirectory.
 You can use the following script to destroy any keypairs,
 floating ips, and servers:
 
-tempest/stress/tools/cleanup.py
+tempest_stress/tools/cleanup.py
