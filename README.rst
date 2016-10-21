@@ -23,11 +23,11 @@ the private key and user name for ssh to the cluster in the
 [stress] section of tempest.conf. You also need to provide the
 location of the log files:
 
-	target_logfiles = "regexp to all log files to be checked for errors"
-	target_private_key_path = "private ssh key for controller and log file nodes"
-	target_ssh_user = "username for controller and log file nodes"
-	target_controller = "hostname or ip of controller node (for nova-manage)
-	log_check_interval = "time between checking logs for errors (default 60s)"
+    - target_logfiles = "regexp to all log files to be checked for errors"
+    - target_private_key_path = "private ssh key for controller and log file nodes"
+    - target_ssh_user = "username for controller and log file nodes"
+    - target_controller = "hostname or ip of controller node (for nova-manage)
+    - log_check_interval = "time between checking logs for errors (default 60s)"
 
 To activate logging on your console please make sure that you activate `use_stderr`
 in tempest.conf or use the default `logging.conf.sample` file.
@@ -35,34 +35,51 @@ in tempest.conf or use the default `logging.conf.sample` file.
 Running default stress test set
 -------------------------------
 
+Installation
+------------
+#. You first need to clone this repo.::
+
+    $ git clone https://github.com/ghanshyammann/tempest_stress
+    $ cd  tempest_stress
+
+#. Intall::
+
+    $ python setup.py install
+
+#. Install `Tempest`_
+
+.. _Tempest: http://docs.openstack.org/developer/tempest/overview.html#quickstart
+
+
 Configuration
 *************
+
 To Run stress tests, two configuration files are needed:
 
-1. tempest.conf - As per Tempest configuration guidlines
+1. tempest.conf - As per Tempest configuration guidlines here: `configuration`_
 
 2. stress_tests.conf - same location as tempest.conf
 
 later one is being used to define all config options specific to stress tests.
 
-Run:
-****
-The stress test framework can automatically discover test inside the tempest
-test suite. All test flag with the `@stresstest` decorator will be executed.
-In order to use this discovery you have to install tempest CLI, be in the
-tempest root directory and execute the following:
+.. _configuration: http://docs.openstack.org/developer/tempest/configuration.html#tempest-configuration
 
-	tempest run-stress -a -d 30
 
-Running the sample test
------------------------
+Run
+***
 
-To test installation, do the following:
+Run all tests::
 
-	tempest run-stress -t tempest/stress/etc/server-create-destroy-test.json -d 30
+    $ run-tempest-stress -a -d 30
 
+Run specific test::
+
+    $ run-tempest-stress -t ./tempest_stress/etc/server-create-destroy-test.json -d 30
 This sample test tries to create a few VMs and kill a few VMs.
 
+For more information please refer run-tempest-stress CLI help::
+
+    $ run-tempest-stress -h
 
 Additional Tools
 ----------------

@@ -13,8 +13,9 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-import tempest_stress.stressaction as stressaction
 import tempest.test
+
+import tempest_stress.stressaction as stressaction
 
 
 class FakeStressAction(stressaction.StressAction):

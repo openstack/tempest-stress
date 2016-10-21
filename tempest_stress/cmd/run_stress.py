@@ -25,8 +25,8 @@ except ImportError:
     from unittest2 import loader
 
 from oslo_log import log as logging
-from testtools import testsuite
 from tempest import config
+from testtools import testsuite
 
 from tempest_stress import config as stress_cfg
 from tempest_stress import driver
@@ -35,8 +35,8 @@ LOG = logging.getLogger(__name__)
 
 
 def discover_stress_tests(path="./", filter_attr=None, call_inherited=False):
-    """Discovers all tests and create action out of them
-    """
+    """Discovers all tests and create action out of them."""
+
     LOG.info("Start test discovery")
     tests = []
     testloader = loader.TestLoader()
@@ -65,7 +65,7 @@ def discover_stress_tests(path="./", filter_attr=None, call_inherited=False):
                                  }
                       }
             if (not call_inherited and
-                getattr(test_func, "st_allow_inheritance") is not True):
+               getattr(test_func, "st_allow_inheritance") is not True):
                 class_structure = inspect.getmro(test_func.im_class)
                 if test_func.__name__ not in class_structure[0].__dict__:
                     continue
@@ -75,8 +75,8 @@ def discover_stress_tests(path="./", filter_attr=None, call_inherited=False):
 
 parser = argparse.ArgumentParser(description='Run stress tests')
 parser.add_argument('-c', '--config-file-path',
-                     metavar='/etc/',
-                     help='path to tempest and stress tests config files')
+                    metavar='/etc/tempest',
+                    help='path to tempest and stress tests config files')
 parser.add_argument('-d', '--duration', default=300, type=int,
                     help="Duration of test in secs")
 parser.add_argument('-s', '--serial', action='store_true',

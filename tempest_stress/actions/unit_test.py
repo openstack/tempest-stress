@@ -12,8 +12,8 @@
 
 from oslo_log import log as logging
 from oslo_utils import importutils
-
 from tempest import config
+
 import tempest_stress.stressaction as stressaction
 
 CONF = config.CONF
@@ -74,7 +74,7 @@ class UnitTest(stressaction.StressAction):
     def run(self):
         if self.class_setup_per != SetUpClassRunTime.application:
             if (self.class_setup_per == SetUpClassRunTime.action
-                or self.setupclass_called is False):
+               or self.setupclass_called is False):
                 self.klass.setUpClass()
                 self.setupclass_called = True
 
@@ -82,7 +82,7 @@ class UnitTest(stressaction.StressAction):
                 self.run_core()
             finally:
                 if (CONF.stress.leave_dirty_stack is False
-                    and self.class_setup_per == SetUpClassRunTime.action):
+                   and self.class_setup_per == SetUpClassRunTime.action):
                     self.klass.tearDownClass()
         else:
             self.run_core()

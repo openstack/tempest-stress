@@ -15,7 +15,6 @@
 #    limitations under the License.
 
 from oslo_log import log as logging
-
 from tempest.common import credentials_factory as credentials
 from tempest.common import waiters
 

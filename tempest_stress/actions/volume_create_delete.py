@@ -12,6 +12,7 @@
 
 from tempest.common.utils import data_utils
 from tempest import config
+
 import tempest_stress.stressaction as stressaction
 
 CONF = config.CONF

@@ -16,9 +16,8 @@ import abc
 import signal
 import sys
 
-import six
-
 from oslo_log import log as logging
+import six
 
 
 @six.add_metaclass(abc.ABCMeta)

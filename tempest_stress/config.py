@@ -57,6 +57,7 @@ StressGroup = [
                      ' every project.')
 ]
 
+
 class StressConfigPrivate(object):
 
     DEFAULT_CONFIG_FILE = "stress_tests.conf"
@@ -66,7 +67,8 @@ class StressConfigPrivate(object):
         super(StressConfigPrivate, self).__init__()
 
         # Environment variables override defaults.
-        conf_file = os.environ.get('STRESS_TEST_CONFIG', self.DEFAULT_CONFIG_FILE)
+        conf_file = os.environ.get('STRESS_TEST_CONFIG',
+                                   self.DEFAULT_CONFIG_FILE)
         conf_path = ''
         if config_path:
             config_path + '/' + self.DEFAULT_CONFIG_FILE
@@ -93,6 +95,7 @@ class StressConfigPrivate(object):
 class StressConfigProxy(object):
     _config = None
     _path = None
+
     def __getattr__(self, attr):
         if not self._config:
             self._config = StressConfigPrivate(config_path=self._path)
