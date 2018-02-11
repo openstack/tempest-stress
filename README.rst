@@ -42,7 +42,7 @@ Installation
     $ git clone https://github.com/ghanshyammann/tempest_stress
     $ cd  tempest_stress
 
-#. Intall::
+#. Install::
 
     $ python setup.py install
 
@@ -56,7 +56,7 @@ Configuration
 
 To Run stress tests, two configuration files are needed:
 
-1. tempest.conf - As per Tempest configuration guidlines here: `configuration`_
+1. tempest.conf - As per Tempest configuration guidelines here: `configuration`_
 
 2. stress_tests.conf - same location as tempest.conf
 
