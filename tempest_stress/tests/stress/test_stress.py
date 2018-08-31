@@ -44,7 +44,8 @@ class StressFrameworkTest(base.TestCase):
                 LOG.debug('error of %s:\n%s' % (cmd_str, result_err))
                 raise exceptions.CommandFailed(proc.returncode,
                                                cmd,
-                                               result)
+                                               result,
+                                               result_err)
         finally:
             LOG.debug('output of %s:\n%s' % (cmd_str, result))
         return proc.returncode
