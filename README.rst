@@ -39,7 +39,7 @@ Installation
 ------------
 #. You first need to clone this repo.::
 
-    $ git clone https://github.com/ghanshyammann/tempest_stress
+    $ git clone https://github.com/openstack/tempest-stress
     $ cd  tempest_stress
 
 #. Install::
