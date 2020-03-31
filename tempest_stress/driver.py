@@ -142,7 +142,7 @@ def stress_openstack(tests, duration, max_runs=None, stop_on_error=False):
         if test.get('use_admin', False):
             manager = admin_manager
         else:
-            raise NotImplemented('Non admin tests are not supported')
+            raise NotImplementedError('Non admin tests are not supported')
         for p_number in range(test.get('threads', default_thread_num)):
             if test.get('use_isolated_tenants', False):
                 username = data_utils.rand_name("stress_user")
