@@ -17,13 +17,13 @@ import shlex
 import subprocess
 
 from oslo_log import log as logging
+from oslotest import base
 from tempest.lib import exceptions
-from tempest.tests import base
 
 LOG = logging.getLogger(__name__)
 
 
-class StressFrameworkTest(base.TestCase):
+class StressFrameworkTest(base.BaseTestCase):
     """Basic test for the stress test framework."""
 
     def _cmd(self, cmd, param):
