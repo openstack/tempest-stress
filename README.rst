@@ -75,6 +75,7 @@ Run all tests::
 Run specific test::
 
     $ run-tempest-stress -t ./tempest_stress/etc/server-create-destroy-test.json -d 30
+
 This sample test tries to create a few VMs and kill a few VMs.
 
 For more information please refer run-tempest-stress CLI help::
