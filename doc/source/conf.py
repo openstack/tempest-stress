@@ -37,7 +37,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'tempest_stress'
+project = u'tempest-stress'
 copyright = u'2016, OpenStack Foundation'
 
 # If true, '()' will be appended to :func: etc. cross-reference text.
@@ -55,6 +55,7 @@ openstackdocs_repo_name = 'openstack/tempest-stress'
 openstackdocs_auto_name = False
 openstackdocs_bug_project = 'tempest'
 openstackdocs_bug_tag = 'doc'
+openstackdocs_pdf_link = True
 
 # -- Options for HTML output --------------------------------------------------
 
@@ -74,10 +75,15 @@ htmlhelp_basename = '%sdoc' % project
 # [howto/manual]).
 latex_documents = [
     ('index',
-     '%s.tex' % project,
-     u'%s Documentation' % project,
+     'doc-tempest-stress.tex',
+     u'Tempest-stress Documentation',
      u'OpenStack Foundation', 'manual'),
 ]
 
 # Example configuration for intersphinx: refer to the Python standard library.
 #intersphinx_mapping = {'http://docs.python.org/': None}
+
+latex_use_xindy = False
+latex_elements = {
+    'extraclassoptions': 'openany,oneside',
+}
