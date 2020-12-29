@@ -12,10 +12,10 @@
 
 import re
 
-from tempest.common.utils import data_utils
 from tempest.common.utils.linux import remote_client
 from tempest.common import waiters
 from tempest import config
+from tempest.lib.common.utils import data_utils
 from tempest.lib.common.utils import test_utils
 
 import tempest_stress.stressaction as stressaction

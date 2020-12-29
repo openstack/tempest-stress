@@ -22,11 +22,11 @@ from oslo_utils import importutils
 import six
 from tempest import clients
 from tempest.common import credentials_factory as credentials
-from tempest.common.utils import data_utils
 from tempest import config
 from tempest import exceptions
 from tempest.lib.common import cred_client
 from tempest.lib.common import ssh
+from tempest.lib.common.utils import data_utils
 
 from tempest_stress import cleanup
 from tempest_stress import config as stress_cfg
