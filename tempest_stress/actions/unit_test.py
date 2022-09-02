@@ -12,7 +12,7 @@
 
 from oslo_log import log as logging
 from oslo_utils import importutils
-from tempest import config
+from tempest_stress import config
 
 import tempest_stress.stressaction as stressaction
 
