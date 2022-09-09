@@ -10,7 +10,6 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from oslo_log import log as logging
 from oslo_utils import importutils
 from tempest_stress import config
 
@@ -50,7 +49,6 @@ class UnitTest(stressaction.StressAction):
         method = kwargs['test_method'].split('.')
         self.test_method = method.pop()
         self.klass = importutils.import_class('.'.join(method))
-        self.logger = logging.getLogger('.'.join(method))
         # valid options are 'process', 'application' , 'action'
         self.class_setup_per = kwargs.get('class_setup_per',
                                           SetUpClassRunTime.process)
@@ -69,7 +67,10 @@ class UnitTest(stressaction.StressAction):
     def run_core(self):
         res = self.klass(self.test_method).run()
         if res.errors:
-            raise RuntimeError(res.errors)
+            raise RuntimeError(res.errors[0][1])
+
+        if res.failures:
+            raise RuntimeError(res.failures[0][1])
 
     def run(self):
         if self.class_setup_per != SetUpClassRunTime.application:
