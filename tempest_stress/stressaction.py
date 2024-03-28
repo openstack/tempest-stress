@@ -17,11 +17,9 @@ import signal
 import sys
 
 from oslo_log import log as logging
-import six
 
 
-@six.add_metaclass(abc.ABCMeta)
-class StressAction(object):
+class StressAction(object, metaclass=abc.ABCMeta):
 
     def __init__(self, manager, max_runs=None, stop_on_error=False):
         full_cname = self.__module__ + "." + self.__class__.__name__
