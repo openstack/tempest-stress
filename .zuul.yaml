@@ -1,19 +1,18 @@
 - project:
     templates:
+      - openstack-python3-jobs
       - publish-openstack-docs-pti
     check:
       jobs:
         - openstack-tox-pep8
-        - openstack-tox-py38
-        - openstack-tox-py39
         - openstack-tox-py310
         - openstack-tox-py311
         - openstack-tox-py312
+        - openstack-tox-py313
     gate:
       jobs:
         - openstack-tox-pep8
-        - openstack-tox-py38
-        - openstack-tox-py39
         - openstack-tox-py310
         - openstack-tox-py311
         - openstack-tox-py312
+        - openstack-tox-py313
