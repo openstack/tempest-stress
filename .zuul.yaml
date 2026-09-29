@@ -9,6 +9,7 @@
         - openstack-tox-py311
         - openstack-tox-py312
         - openstack-tox-py313
+        - openstack-tox-py314
     gate:
       jobs:
         - openstack-tox-pep8
@@ -16,3 +17,4 @@
         - openstack-tox-py311
         - openstack-tox-py312
         - openstack-tox-py313
+        - openstack-tox-py314
